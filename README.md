@@ -1,6 +1,6 @@
 # shelf | HTTPS_Hub
 
-### A proxy server that automates HTTPS connections to local IP addresses
+### A proxy server that automates HTTPS connections to local IP addresses & ports
 
 ## Quickstart
 
