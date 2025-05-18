@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  go:
+    build:
+      context: ./back
+    container_name: shelf_httpshub_go
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config.yml:/config/ports.yml
+      - ./certs/:/certs/
+    environment:
+      - TZ=UTM
+      - DOMAIN=local.example.com
+      - LOCAL_IP=192.168.0.2
+      - CLOUDFLARE_DNS_API_TOKEN=API_KEY
+      - CLOUDFLARE_ZONE_API_TOKEN=API_KEY
+    restart: unless-stopped
