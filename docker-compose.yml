@@ -11,6 +11,7 @@ services:
     volumes:
       - ./config.yml:/config/ports.yml
       - ./certs/:/certs/
+      - ./front/dist/:/front/
     environment:
       - TZ=UTM
       - DOMAIN=local.example.com

@@ -33,7 +33,7 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 
-	r.GET("/*path", proxy.ProxyHandler(portMap))
+	r.Any("/*path", proxy.ProxyHandler(portMap))
 
 	// Auto generate SSL cert
 	_, err = cert.AutoRenew()

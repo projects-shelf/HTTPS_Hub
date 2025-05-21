@@ -1,6 +1,7 @@
 package proxy
 
 import (
+	"back/root"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -13,8 +14,14 @@ import (
 func ProxyHandler(portMap map[string]string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		host := c.Request.Host
-		key := host
 
+		rootDomain := os.Getenv("DOMAIN")
+		if host == rootDomain {
+			root.RootHandler(portMap, rootDomain)(c)
+			return
+		}
+
+		key := host
 		if idx := strings.Index(host, "."); idx != -1 {
 			key = host[:idx]
 		} else {
